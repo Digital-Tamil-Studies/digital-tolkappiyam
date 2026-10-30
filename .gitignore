@@ -1,0 +1,7 @@
+dist/
+.~lock*
+__pycache__/
+data/source/*.pdf
+data/work/scan_1961/png/
+data/work/png/
+data/work/tessdata/*.traineddata

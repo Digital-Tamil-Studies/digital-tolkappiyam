@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>தொல்காப்பியம் · Tholkappiyam</title>
+<meta name="description" content="தொல்காப்பியம் – அதிகாரம், இயல் வாரியாக நூற்பாக்களைப் படிக்கவும்; சொற்களுக்குப் பொருள் காணவும்.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">உள்ளடக்கத்திற்குச் செல்</a>
+
+<header class="top">
+  <a class="brand" href="#/">
+    <span class="brand-mark" aria-hidden="true">தொ</span>
+    <span class="brand-text">
+      <span class="brand-ta">தொல்காப்பியம்</span>
+      <span class="brand-en">Tholkappiyam</span>
+    </span>
+  </a>
+  <form class="search" id="searchform" role="search">
+    <input type="search" id="q" placeholder="நூற்பா அல்லது சொல் தேடு…" autocomplete="off" spellcheck="false" aria-label="தேடு">
+    <button type="submit" aria-label="தேடு">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8.5 3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm4.8 8.24 4.23 4.23-1.06 1.06-4.23-4.23z"/></svg>
+    </button>
+  </form>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="அதிகாரம்"></nav>
+
+<div class="shell">
+  <aside class="side" id="side" aria-label="இயல்"></aside>
+  <main id="main" class="content" tabindex="-1"></main>
+</div>
+
+<div id="tip" class="tip" role="dialog" aria-label="சொற்பொருள்" hidden></div>
+
+<footer class="foot">
+  <span id="stats"></span>
+  <span>மூலம்: <a href="https://www.projectmadurai.org/pm_etexts/utf8/pmuni0100.html" rel="noopener">Project Madurai</a></span>
+</footer>
+
+<script src="data/thol.js"></script>
+<script src="data/dict.js"></script>
+<script src="data/notes.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

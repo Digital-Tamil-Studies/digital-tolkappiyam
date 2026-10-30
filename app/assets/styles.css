@@ -1,0 +1,204 @@
+/* தொல்காப்பியம் — styles */
+:root{
+  --bg:#f5f6f2; --panel:#ffffff; --panel-2:#eef0ea;
+  --ink:#1c201e; --ink-2:#4b534f; --ink-3:#7b847f;
+  --line:#dde1da; --line-2:#c7cdc5;
+  --accent:#2d5e52; --accent-ink:#1f463d; --accent-soft:#e3eee9;
+  --gloss:#b8781c; --gloss-soft:#fbf1dc;
+  --mark:#ffe99a;
+  --focus:#2f6f9f;
+  --shadow:0 10px 30px rgba(20,30,25,.14), 0 2px 6px rgba(20,30,25,.08);
+  --radius:10px;
+  --ui:'Noto Sans Tamil','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --text:'Noto Serif Tamil','Noto Sans Tamil',Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121614; --panel:#1a1f1c; --panel-2:#222926;
+    --ink:#e7eae6; --ink-2:#b4bbb6; --ink-3:#848c87;
+    --line:#2d342f; --line-2:#3d4540;
+    --accent:#86c4b0; --accent-ink:#a9d8c8; --accent-soft:#1f2f2a;
+    --gloss:#e0a84a; --gloss-soft:#3a2f1a;
+    --mark:#6b5a1a;
+    --focus:#6aa6d6;
+    --shadow:0 10px 30px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15.5px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-weight:600;line-height:1.3;margin:0}
+.muted{color:var(--ink-3)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--panel);padding:8px 12px;border-radius:6px;z-index:100}
+.skip:focus{left:8px}
+
+/* ---------- header ---------- */
+.top{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:12px 24px;background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;color:inherit}
+.brand:hover{text-decoration:none}
+.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;background:var(--accent);color:#fff;font-weight:700;font-size:16px;line-height:1}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-ta{font-weight:700;font-size:17px}
+.brand-en{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.search{position:relative;flex:1 1 280px;max-width:520px;margin-left:auto;display:flex}
+.search input{width:100%;padding:9px 42px 9px 14px;border:1px solid var(--line-2);border-radius:999px;background:var(--bg)}
+.search input:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 22%,transparent)}
+.search button{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:0;background:none;padding:6px;cursor:pointer;display:grid;place-items:center}
+.search svg{width:18px;height:18px;fill:var(--ink-3)}
+
+/* ---------- அதிகாரம் tabs ---------- */
+.tabs{position:sticky;top:0;z-index:30;display:flex;gap:4px;padding:0 24px;background:color-mix(in srgb,var(--panel) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;padding:12px 16px 10px;border-bottom:3px solid transparent;color:var(--ink-2);font-weight:500;white-space:nowrap;margin-bottom:-1px}
+.tabs a:hover{text-decoration:none;color:var(--ink);background:var(--panel-2)}
+.tabs a.active{color:var(--accent-ink);border-bottom-color:var(--accent);font-weight:600}
+.tabs a .n{font-size:11.5px;color:var(--ink-3);margin-left:6px;font-variant-numeric:tabular-nums}
+.tabs .gap{flex:1}
+.tabs a.dict{color:var(--gloss)}
+.tabs a.dict.active{border-bottom-color:var(--gloss)}
+
+/* ---------- layout ---------- */
+.shell{display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;max-width:1240px;margin:0;padding:22px 24px 60px}
+.content{min-width:0}
+.side{min-width:0;align-self:start;position:sticky;top:60px;max-height:calc(100vh - 80px);overflow-y:auto;padding-right:4px}
+.side h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:6px 0 8px 10px}
+.side-list{list-style:none;margin:0;padding:0}
+.side-list li a{display:flex;align-items:baseline;gap:8px;padding:8px 10px;border-radius:8px;color:var(--ink-2)}
+.side-list li a:hover{text-decoration:none;background:var(--panel-2);color:var(--ink)}
+.side-list li a.active{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.side-list .idx{flex:none;width:2.2em;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.side-list .name{flex:1;min-width:0}
+.side-list .n{flex:none;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.side-note{font-size:13px;color:var(--ink-3);padding:4px 10px}
+.side .lookup{padding:0 0 12px}
+.side .lookup input{width:100%;padding:9px 12px;border:1px solid var(--line-2);border-radius:8px;background:var(--panel)}
+.side .lookup input:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 22%,transparent)}
+.letters{display:flex;flex-wrap:wrap;gap:4px;padding:0 4px}
+.letters a{display:inline-grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink-2);font-family:var(--text)}
+.letters a:hover{text-decoration:none;border-color:var(--accent)}
+.letters a.cur{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr;gap:14px;padding:14px 16px 60px}
+  .side{position:static;max-height:none;overflow:visible}
+  .side-list{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding-bottom:6px;scrollbar-width:thin}
+  .side-list li{flex:none}
+  .side-list li a{border:1px solid var(--line);background:var(--panel);padding:6px 12px;border-radius:999px;white-space:nowrap}
+  .side-list .idx{display:none}
+}
+
+/* ---------- common ---------- */
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13.5px;color:var(--ink-3);margin-bottom:8px}
+.crumbs a{color:var(--ink-2)}
+.crumbs .sep{opacity:.6}
+.page-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.page-title{font-size:26px;font-weight:700}
+.page-sub{color:var(--ink-3);font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.hint{font-size:13px;color:var(--ink-3);margin:0 0 14px}
+
+/* ---------- sutra list ---------- */
+.sutra-card{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px 16px 14px;scroll-margin-top:70px}
+.sutra-card + .sutra-card{margin-top:12px}
+.sutra-card .num{font-weight:700;color:var(--accent);font-size:15px;text-align:right;padding-top:4px;font-variant-numeric:tabular-nums}
+.sutra-card .num a{color:inherit}
+.sutra-card .num a:hover{text-decoration:none;color:var(--accent-ink)}
+.sutra-card[data-g]{cursor:pointer;transition:border-color .12s,background .12s}
+.sutra-card[data-g]:hover{border-color:var(--line-2);background:color-mix(in srgb,var(--accent-soft) 35%,var(--panel))}
+.sutra-card.cur{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+
+/* ---------- verse text ---------- */
+.sutra-card .body{min-width:0}
+.sutra-title{font-family:var(--text);font-size:15px;font-weight:600;color:var(--accent-ink);margin:3px 0 6px}
+.sutra-title .unsure{display:inline-block;font:600 10px/1 var(--ui);color:var(--gloss);background:var(--gloss-soft);border-radius:3px;padding:1px 3px;vertical-align:super}
+.sutra-title .sic{font:italic 10px/1 var(--ui);color:var(--ink-3);vertical-align:super;margin-left:2px}
+.verse{font-family:var(--text);font-size:19px;line-height:1.85;color:var(--ink)}
+.verse .line{padding-left:1.4em;text-indent:-1.4em}
+.sutra-view .verse{font-size:23px;line-height:1.95}
+.w{border-radius:3px;padding:0 1px}
+.w[data-k]{cursor:help;text-decoration:underline dotted color-mix(in srgb,var(--gloss) 70%,transparent);text-decoration-thickness:1.5px;text-underline-offset:4px;transition:background .12s}
+.w[data-k]:hover,.w[data-k]:focus,.w.active{background:var(--gloss-soft);text-decoration-color:var(--gloss)}
+
+/* ---------- single sutra ---------- */
+.sutra-view{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 30px}
+.sutra-view .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sutra-view h1{font-size:21px}
+.sutra-view .gnum{color:var(--ink-3);font-size:13px}
+/* ---------- poem view: commentaries ---------- */
+.comms{display:grid;gap:14px;margin-top:14px}
+.comm{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 30px 22px}
+.comm h2{font-size:13px;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.comm .src{margin:2px 0 12px;font-size:13px;color:var(--ink-3)}
+.comm h3{font-family:var(--text);font-size:18px;margin:0 0 10px;color:var(--ink)}
+.comm-ta p{font-family:var(--text);font-size:17px;line-height:1.9;margin:0 0 .8em;color:var(--ink)}
+.comm-ta p:last-child{margin-bottom:0}
+.comm-en{font-family:Georgia,'Noto Serif',serif}
+.comm-en h3{font-family:inherit;font-style:normal}
+.comm-en .translit{font-style:italic;color:var(--ink-2);font-size:15.5px;line-height:1.7;margin-bottom:12px;padding-left:12px;border-left:3px solid var(--line)}
+.comm-en .trans{font-size:17px;line-height:1.75;color:var(--ink)}
+.comm .unsure{display:inline-block;font:600 11px/1 var(--ui);color:var(--gloss);background:var(--gloss-soft);border-radius:3px;padding:1px 3px;margin-left:1px;vertical-align:super;cursor:help}
+.comm .sic{font:italic 11px/1 var(--ui);color:var(--ink-3);vertical-align:super;margin-left:2px;cursor:help}
+@media (max-width:640px){.comm{padding:16px 16px 18px}.comm-ta p{font-size:16px}}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:18px}
+.pager a{flex:1;display:flex;flex-direction:column;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);color:inherit;min-width:0}
+.pager a:hover{text-decoration:none;border-color:var(--accent);background:var(--accent-soft)}
+.pager a.next{text-align:right;align-items:flex-end}
+.pager .dir{font-size:12px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.pager .lbl{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pager .prev-text{font-family:var(--text);color:var(--ink-2);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pager .spacer{flex:1}
+.numstrip{display:flex;flex-wrap:wrap;gap:5px;margin-top:18px}
+.numstrip a{display:inline-grid;place-items:center;min-width:32px;height:30px;padding:0 6px;border-radius:7px;background:var(--panel);border:1px solid var(--line);color:var(--ink-2);font-size:13px;font-variant-numeric:tabular-nums}
+.numstrip a:hover{text-decoration:none;border-color:var(--accent)}
+.numstrip a.cur{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.kbd-hint{margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+kbd{font:inherit;font-size:11.5px;padding:1px 6px;border:1px solid var(--line-2);border-bottom-width:2px;border-radius:5px;background:var(--panel)}
+
+/* ---------- gloss popup (hover) and pinned card ---------- */
+.tip{position:fixed;z-index:50;width:min(360px,calc(100vw - 24px));max-height:min(70vh,520px);overflow-y:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:12px 14px;font-size:14px;line-height:1.5}
+.tip .tip-close{position:absolute;top:6px;right:8px;border:0;background:none;font-size:20px;line-height:1;color:var(--ink-3);cursor:pointer;padding:2px 6px;border-radius:4px}
+.tip .tip-close:hover{color:var(--ink);background:var(--panel-2)}
+.tip .ent + .ent{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.tip .head{font-family:var(--text);font-size:17px;font-weight:600;padding-right:22px}
+.tip .head a{color:inherit}
+.tip .lemma{font-size:12px;color:var(--ink-3);font-family:var(--ui);font-weight:400;margin-left:6px}
+.tip .wtype{display:inline-block;font-size:11.5px;color:var(--accent-ink);background:var(--accent-soft);border-radius:999px;padding:0 7px;margin-right:6px;vertical-align:middle}
+.tip .m{margin-top:4px;color:var(--ink-2)}
+.tip .sense{margin-top:8px}
+.tip .sense .no{color:var(--ink-3);margin-right:4px}
+.tip .ref{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px}
+.tip .more{margin-top:6px;font-size:12px;color:var(--ink-3)}
+.tip.pinned{border-color:var(--gloss)}
+@media (max-width:640px){
+  .tip.pinned{left:0!important;right:0;bottom:0;top:auto!important;width:100%;max-height:65vh;border-radius:14px 14px 0 0}
+}
+
+/* ---------- dictionary ---------- */
+.headwords{list-style:none;margin:0;padding:0;columns:2;column-gap:28px}
+@media (max-width:640px){.headwords{columns:1}}
+.headwords li{break-inside:avoid;padding:5px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+.headwords li a{font-family:var(--text);font-size:16px;color:var(--ink)}
+.headwords li .t{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.entry h1{font-family:var(--text);font-size:26px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.entry h1 .lemma{font-size:14px;color:var(--ink-3);font-family:var(--ui);font-weight:400}
+.sense{margin-top:12px;font-size:15px}
+.sense .wtype{display:inline-block;font-size:11.5px;padding:0 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);margin-right:6px;vertical-align:middle}
+.sense .meaning{display:block;margin-top:3px}
+.sense .ref{display:block;margin-top:3px;font-size:12.5px;color:var(--ink-3)}
+.sense .ref a{color:var(--accent)}
+
+/* ---------- search ---------- */
+.results h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:22px 0 10px}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+.result{display:block;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;color:inherit}
+.result + .result{margin-top:8px}
+.result:hover{text-decoration:none;border-color:var(--accent)}
+.result .where{font-size:12.5px;color:var(--ink-3);margin-bottom:4px}
+.result .verse{font-size:16.5px;line-height:1.7}
+
+/* ---------- footer ---------- */
+.foot{max-width:1240px;margin:0;padding:18px 24px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--ink-3);font-size:13px;border-top:1px solid var(--line)}
